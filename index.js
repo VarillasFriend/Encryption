@@ -60,10 +60,10 @@ function testPassword() {
 
 function submitForm(password) {
     if (authenticated) {
-        content.style.display = 'block'
-        inputHolder.style.display = 'none'
-        time_before = new Date()
-        time_before = time_before.getTime()
+        content.style.display = "block";
+        inputHolder.style.display = "none";
+        time_before = new Date();
+        time_before = time_before.getTime();
 
         const h1 = document.querySelectorAll("h1"),
             h2 = document.querySelectorAll("h2"),
@@ -75,14 +75,14 @@ function submitForm(password) {
         decryptItems(h2, password);
         decryptItems(h3, password);
         decryptItems(p, password);
-        decryptImages(img, password)
-        
-        lazyLoad()
+        decryptImages(img, password);
 
-        time_after = new Date()
-        time_after = time_after.getTime()
+        lazyLoad();
 
-        console.log(time_after - time_before)
+        time_after = new Date();
+        time_after = time_after.getTime();
+
+        console.log(time_after - time_before);
     }
 }
 
@@ -95,29 +95,88 @@ function decryptItems(elements, password) {
 function decryptImages(elements, password) {
     elements.forEach((element) => {
         if (element.src.value) {
-            element.src.value = decrypt(element.src.value, password)
+            element.src.value = decrypt(element.src.value, password);
         } else if (element.dataset.src) {
-            element.dataset.src = decrypt(element.dataset.src, password)
+            element.dataset.src = decrypt(element.dataset.src, password);
         }
     });
 }
 
-const encryptedPassword = "U2FsdGVkX1/xWuctyJISodaT5oDfL7r2l19sOZm3zQ0=",
+const encryptedPassword =
+        "U2FsdGVkX18eIVxBabE9hdG9cJy0NiBeN30QkHonimgm5wz1JsAkv3iykRaJd97x",
     input = document.querySelector("#input"),
     submit = document.querySelector(".submit"),
-    content = document.querySelector('#content'),
-    inputHolder = document.querySelector('.input-holder');
+    content = document.querySelector("#content"),
+    inputHolder = document.querySelector(".input-holder"),
+    images = document.querySelectorAll("#img-holder img"),
+    showImage = document.querySelector("#show-image"),
+    all = document.getElementById("all");
 
 let authenticated = false;
 
-input.onkeydown = function(event) {
+input.onkeydown = function (event) {
     if (event.keyCode == 13) {
-        testPassword()
+        testPassword();
     }
-} 
+};
 
-submit.onclick = function() {
-    testPassword()
+submit.onclick = function () {
+    testPassword();
+};
+
+images.forEach((image) => {
+    image.onclick = function (event) {
+        showImg(image, event);
+    };
+});
+
+function showImg(image, event) {
+    showImage.innerHTML = `<img src='${image.src}'> <div id='show-image-description'> <h1>${image.dataset.title}</h1> <p>${image.dataset.desc}</p> <svg xmlns="http://www.w3.org/2000/svg" id="close" class='icon' width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> </div>`;
+    showImage.classList.add("show");
+
+    all.style.filter = "blur(10px)";
+
+    document.querySelector('#close').onclick = function () {
+        stopShowImg()
+    }
+
+    all.onclick = function (event2) {
+        if (event2 != event) {
+            stopShowImg()
+        }
+    }
 }
 
-// console.log(encrypt('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.TCWF-a_k7sV25RqjeKkKZgHaE2%26pid%3DApi&f=1', 'Hello World'))
+function stopShowImg() {
+    showImage.innerHTML = '';
+    showImage.classList.remove("show");
+    all.style.filter = "blur(0px)";
+}
+
+console.log(
+    encrypt(
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.4itrffpKjIUD1NP4HCECqwHaEj%26pid%3DApi&f=1",
+        "VcDM63Ek!W9*Qzw$"
+    )
+);
+
+console.log(
+    encrypt(
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.4iARKovudalFTvVZEB4ujQHaEK%26pid%3DApi&f=1",
+        "VcDM63Ek!W9*Qzw$"
+    )
+);
+
+console.log(
+    encrypt(
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.mZ2VhJb-p3IK6gPsJAT-fwHaFj%26pid%3DApi&f=1",
+        "VcDM63Ek!W9*Qzw$"
+    )
+);
+
+console.log(
+    encrypt(
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.JdCz7pNorREBhMnJRnQONQHaHa%26pid%3DApi&f=1",
+        "VcDM63Ek!W9*Qzw$"
+    )
+);
