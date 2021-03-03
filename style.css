@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Nimbus Sans';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Nimbus Sans'), url('NimbusSanL-Reg.otf') format('otf');
+}
+
 body {
     overflow-x: hidden;
     margin: 0;
@@ -7,7 +14,7 @@ body {
 }
 
 h1 {
-    font-family: "Zilla Slab", serif;
+    font-family: "Merriweather", serif;
     font-size: 2.5rem;
 }
 
@@ -62,32 +69,39 @@ h1 {
 }
 
 #img-holder {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
     display: grid;
-    column-gap: 1rem;
-    row-gap: 1rem;
-    grid-template-columns: repeat(3, 22rem);
-    grid-auto-rows: 22rem;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    grid-gap: 10px;
 }
 
-#img-holder img {
-    object-fit: cover;
-    width: 100%;
+.square {
+    position: relative;
+}
+
+.square::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.square img {
+    position: absolute;
+    top: 0; left: 0;
     height: 100%;
+    width: 100%;
+    object-fit: cover;
     cursor: pointer;
 }
 
 #show-image {
     display: none;
-    width: 70%;
+    width: 80%;
     height: auto;
     border-radius: 0.5rem;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
     background-color: white;
     color: black;
-    left: 15%;
+    left: 10%;
     top: 5%;
     bottom: 5%;
     z-index: 1;
@@ -146,6 +160,19 @@ h1 {
 }
 
 @media only screen and (max-width: 50rem) {
+    #content {
+        width: 100%;
+    }
+
+    #img-holder {
+        grid-template-columns: repeat(auto-fill, 24.4%);
+        grid-gap: 3px;
+    }
+
+    .heading {
+        padding: 1rem;
+    }
+
     .input-holder {
         width: 80%;
     }
