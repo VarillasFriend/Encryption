@@ -153,30 +153,9 @@ function stopShowImg() {
     all.style.filter = "blur(0px)";
 }
 
-console.log(
-    encrypt(
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.4itrffpKjIUD1NP4HCECqwHaEj%26pid%3DApi&f=1",
-        "VcDM63Ek!W9*Qzw$"
-    )
-);
-
-console.log(
-    encrypt(
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.4iARKovudalFTvVZEB4ujQHaEK%26pid%3DApi&f=1",
-        "VcDM63Ek!W9*Qzw$"
-    )
-);
-
-console.log(
-    encrypt(
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.mZ2VhJb-p3IK6gPsJAT-fwHaFj%26pid%3DApi&f=1",
-        "VcDM63Ek!W9*Qzw$"
-    )
-);
-
-console.log(
-    encrypt(
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.JdCz7pNorREBhMnJRnQONQHaHa%26pid%3DApi&f=1",
-        "VcDM63Ek!W9*Qzw$"
-    )
-);
+// console.log(
+//     encrypt(
+//         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.4itrffpKjIUD1NP4HCECqwHaEj%26pid%3DApi&f=1",
+//         "VcDM63Ek!W9*Qzw$"
+//     )
+// );
