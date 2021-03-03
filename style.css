@@ -75,13 +75,8 @@ h1 {
 }
 
 .square {
-    position: relative;
-}
-
-.square::before {
-    content: '';
-    display: block;
     padding-top: 100%;
+    position: relative;
 }
 
 .square img {
@@ -160,6 +155,20 @@ h1 {
 }
 
 @media only screen and (max-width: 50rem) {
+    #show-image {
+        width: 100%;
+        border-radius: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    #show-image img {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+
     #content {
         width: 100%;
     }
