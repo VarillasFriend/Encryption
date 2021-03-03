@@ -136,22 +136,23 @@ function showImg(image, event) {
 
     all.style.filter = "blur(10px)";
 
-    document.querySelector('#close').onclick = function () {
-        stopShowImg()
-    }
+    document.querySelector("#close").onclick = function () {
+        stopShowImg();
+    };
 
     all.onclick = function (event2) {
         if (event2 != event) {
-            stopShowImg()
+            stopShowImg();
         }
-    }
+    };
 }
 
 function stopShowImg() {
-    showImage.innerHTML = '';
+    showImage.innerHTML = "";
     showImage.classList.remove("show");
     all.style.filter = "blur(0px)";
 }
+
 
 // console.log(
 //     encrypt(
