@@ -1,69 +1,146 @@
 <!DOCTYPE html>
-<html lang = 'es'>
+<html lang="es">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-        <meta content="utf-8" http-equiv="encoding">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+        <meta content="utf-8" http-equiv="encoding" />
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-        <link rel='stylesheet' href="./style.css">
+        <link rel="stylesheet" href="./style.css" />
 
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
-        <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet"> 
-        <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700&display=swap" rel="stylesheet"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bitter:wght@700&display=swap"
+            rel="stylesheet"
+        />
+
+        <title>Encripcion</title>
     </head>
     <body>
-        <div id='all'>
-            <div class='input-holder'>
-                <h1 class='encryption-title'> Clave de encripción: </h1>
-                <input id='input'>
-                <input class='submit' type="submit" value="Aceptar"> 
-            </div>
-            
+        <div id="all">
+            <div class="input-holder">
+                <svg
+                    data-height="200"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon lock"
+                    width="44"
+                    height="44"
+                    viewBox="0 0 24 24"
+                    stroke-width="2.1"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="5" y="11" width="14" height="10" rx="2" />
+                    <!-- <circle cx="12" cy="16" r="1" /> -->
+                    <path id="svg" d="M8 11v-4a4 4 0 0 1 8 0v4" />
+                </svg>
 
-            <div id='content'>
-                <div class='heading'>
-                    <h1 class='title'>U2FsdGVkX18CVDRehZBDVs/YPpXKhkyDJMfisLKpHNw=</h1>
-                    <p class='main-description'>U2FsdGVkX19TIwRKi5OKNFpAHiSinVU2IfcgDLO5cOXw0f6PxyX3Pzn3O1LUHsmJaOfZdEDFAu0lJ/+9+wCuNMl2TpJ/llfLJ9PWZYgkRMlrtwioPnmV8pembnuFjzIh</p>
+                <h1 class="encryption-title">Clave de encripción:</h1>
+                <input id="input" />
+                <input class="submit" type="submit" value="Aceptar" />
+            </div>
+
+            <div id="content">
+                <div class="heading">
+                    <h1 class="title">
+                        U2FsdGVkX18CVDRehZBDVs/YPpXKhkyDJMfisLKpHNw=
+                    </h1>
+                    <p class="main-description">
+                        U2FsdGVkX19TIwRKi5OKNFpAHiSinVU2IfcgDLO5cOXw0f6PxyX3Pzn3O1LUHsmJaOfZdEDFAu0lJ/+9+wCuNMl2TpJ/llfLJ9PWZYgkRMlrtwioPnmV8pembnuFjzIh
+                    </p>
                 </div>
 
-                <div id='img-holder'>
-                    <div class='square'>
-                        <img class='lazy' data-src='U2FsdGVkX19lsTWxlKSKT4q8qQWI2WZfbsxaVDRkUx06cIHHOG5mBH5hNJUOFQV2fYMxg8p6gdFvVXPMpWsHafp7XobBP7k47ARcclX064j2cfH5Cca62otkeXcbqGK8ESi2enQ8q+9VsJpYM2AbWMQBphb3tz8jtw4hiUHPlj1mQu02ZEX6WlWgsLB2/Sdf8F7Uw9MCP2ss8dJ4bBDQHA==' data-title='NO se' data-desc='ASdsad'>
+                <div id="img-holder">
+                    <div class="square">
+                        <img
+                            class="lazy"
+                            data-src="U2FsdGVkX19lsTWxlKSKT4q8qQWI2WZfbsxaVDRkUx06cIHHOG5mBH5hNJUOFQV2fYMxg8p6gdFvVXPMpWsHafp7XobBP7k47ARcclX064j2cfH5Cca62otkeXcbqGK8ESi2enQ8q+9VsJpYM2AbWMQBphb3tz8jtw4hiUHPlj1mQu02ZEX6WlWgsLB2/Sdf8F7Uw9MCP2ss8dJ4bBDQHA=="
+                            data-title="U2FsdGVkX1/3JFEDcE7aXxLr/3CTKUS8NmPHjqea2Os="
+                            data-desc="U2FsdGVkX1/2d7lONM4Luusq3ksmo9APf0Jfg8z5/9UhA9YhBLt0QXBj3XswYcsN"
+                        />
                     </div>
-                    <div class='square'>
-                        <img class='lazy' data-src='U2FsdGVkX183J+FXC2N0Jwj2Ucwl7rCwriFE+z6d/9AB5Ogv6fqDV6RWtVfyIAes/daFZgNkbm4CmzVQ+PrtbFURo1Q61ieOxOV2sVPuUSSG7z+Rxn43PofV24PL4z+D82RPQAXaX92xNTXUykH+/CQ6+cFnhuc1X/TS+GA5wabyHtA7N9HGTmpSGQp1U3Qk/lZ3Jho2RMgJJgtLzrzNOA==' data-title='No se' data-desc='ASdsad'>
+                    <div class="square">
+                        <img
+                            class="lazy"
+                            data-src="U2FsdGVkX183J+FXC2N0Jwj2Ucwl7rCwriFE+z6d/9AB5Ogv6fqDV6RWtVfyIAes/daFZgNkbm4CmzVQ+PrtbFURo1Q61ieOxOV2sVPuUSSG7z+Rxn43PofV24PL4z+D82RPQAXaX92xNTXUykH+/CQ6+cFnhuc1X/TS+GA5wabyHtA7N9HGTmpSGQp1U3Qk/lZ3Jho2RMgJJgtLzrzNOA=="
+                            data-title="U2FsdGVkX1/3JFEDcE7aXxLr/3CTKUS8NmPHjqea2Os="
+                            data-desc="U2FsdGVkX1/2d7lONM4Luusq3ksmo9APf0Jfg8z5/9UhA9YhBLt0QXBj3XswYcsN"
+                        />
                     </div>
-                    <div class='square'>
-                        <img class='lazy' data-src='U2FsdGVkX1/w5DpXsILlanjNPJ02uoPoamoRp0dYr7jxP1QNbNwA20vzJlkHsjnnTffOEwlMrtTRu8p14dPvxMoxgPkB/DosegkAN+bM16ikbBBmGwGml+vOMxnIsiFzIcDvowpMh+gjjwYRV5SScfhY+ygEES7oLCZ6uvyB0qOfmsuUXCPCzFoN8eR49H/kJd2uYtIj9YASZvBbo1hRIA==' data-title='No se' data-desc='ASdsad'>
+                    <div class="square">
+                        <img
+                            class="lazy"
+                            data-src="U2FsdGVkX1/w5DpXsILlanjNPJ02uoPoamoRp0dYr7jxP1QNbNwA20vzJlkHsjnnTffOEwlMrtTRu8p14dPvxMoxgPkB/DosegkAN+bM16ikbBBmGwGml+vOMxnIsiFzIcDvowpMh+gjjwYRV5SScfhY+ygEES7oLCZ6uvyB0qOfmsuUXCPCzFoN8eR49H/kJd2uYtIj9YASZvBbo1hRIA=="
+                            data-title="U2FsdGVkX1/3JFEDcE7aXxLr/3CTKUS8NmPHjqea2Os="
+                            data-desc="U2FsdGVkX1/2d7lONM4Luusq3ksmo9APf0Jfg8z5/9UhA9YhBLt0QXBj3XswYcsN"
+                        />
                     </div>
-                    <div class='square'>
-                        <img class='lazy' data-src='U2FsdGVkX1/1d8x3eMgn+l8bDLTVlifHnmO8fC2PNl8yJLq+6HpmnDhYh4wMJBZyPCF95Ea++FTbW2/V15SOnYeasxRFbw1+bZ6wOIxJNu3GsaEevBPEk/w+paykfEO/IOFJzvRyKymq2j3f3RX7OYgw5CSXBK+mt+myM9DB3Og+cqXzaWpUjgq8JYu/1lGM7+XjZe5QpD30skN2QpYi0g==' data-title='No se' data-desc='ASdsad'>
+                    <div class="square">
+                        <img
+                            class="lazy"
+                            data-src="U2FsdGVkX1/1d8x3eMgn+l8bDLTVlifHnmO8fC2PNl8yJLq+6HpmnDhYh4wMJBZyPCF95Ea++FTbW2/V15SOnYeasxRFbw1+bZ6wOIxJNu3GsaEevBPEk/w+paykfEO/IOFJzvRyKymq2j3f3RX7OYgw5CSXBK+mt+myM9DB3Og+cqXzaWpUjgq8JYu/1lGM7+XjZe5QpD30skN2QpYi0g=="
+                            data-title="U2FsdGVkX1/3JFEDcE7aXxLr/3CTKUS8NmPHjqea2Os="
+                            data-desc="U2FsdGVkX1/2d7lONM4Luusq3ksmo9APf0Jfg8z5/9UhA9YhBLt0QXBj3XswYcsN"
+                        />
                     </div>
-                    <div class='square'>
-                        <img class='lazy' data-src='U2FsdGVkX182U5jKvUUhWeYJ4kohcDOVW5jbrXXXKPwt1Pa79gjvvRKd+/cy4V3EE0G3M7TDRtoBglTDDsQc1kgJlbkhDOEzPXft37rOkMMfZBx1vFcYK/iLZhsFYaZGe6NtctF/phf501l2bP6v/n8sXGl0xq35mMS6oCMDeTXv53iJLjIyey4M4FiHAZ+4ryRBzQr6KI1KLdq2JneBwg==' data-title='No se' data-desc='ASdsad'>
+                    <div class="square">
+                        <img
+                            class="lazy"
+                            data-src="U2FsdGVkX182U5jKvUUhWeYJ4kohcDOVW5jbrXXXKPwt1Pa79gjvvRKd+/cy4V3EE0G3M7TDRtoBglTDDsQc1kgJlbkhDOEzPXft37rOkMMfZBx1vFcYK/iLZhsFYaZGe6NtctF/phf501l2bP6v/n8sXGl0xq35mMS6oCMDeTXv53iJLjIyey4M4FiHAZ+4ryRBzQr6KI1KLdq2JneBwg=="
+                            data-title="U2FsdGVkX1/3JFEDcE7aXxLr/3CTKUS8NmPHjqea2Os="
+                            data-desc="U2FsdGVkX1/2d7lONM4Luusq3ksmo9APf0Jfg8z5/9UhA9YhBLt0QXBj3XswYcsN"
+                        />
                     </div>
-                    <div class='square'>
-                        <img class='lazy' data-src='U2FsdGVkX1/yGAgTcJ4JUxybseaePv9OsUUgjHXPIH7Z/wqMgW0GIhnKR55xwzpBDQHY/INLdCFtEK0ngiymiS1LoENSKEvva/4tdYyh2DNAynAYj0O8ebdrS+9x/kvhxwccVs7XbQkhhnoJ3BWLHbH/X0lXdws8g288J/z+ZM/tLSwU9rYe10Kvd1Q0OiobGwafJK+nvewONxcSBBiUvA==' data-title='No se' data-desc='ASdsad'>
+                    <div class="square">
+                        <img
+                            class="lazy"
+                            data-src="U2FsdGVkX1/yGAgTcJ4JUxybseaePv9OsUUgjHXPIH7Z/wqMgW0GIhnKR55xwzpBDQHY/INLdCFtEK0ngiymiS1LoENSKEvva/4tdYyh2DNAynAYj0O8ebdrS+9x/kvhxwccVs7XbQkhhnoJ3BWLHbH/X0lXdws8g288J/z+ZM/tLSwU9rYe10Kvd1Q0OiobGwafJK+nvewONxcSBBiUvA=="
+                            data-title="U2FsdGVkX1/3JFEDcE7aXxLr/3CTKUS8NmPHjqea2Os="
+                            data-desc="U2FsdGVkX1/2d7lONM4Luusq3ksmo9APf0Jfg8z5/9UhA9YhBLt0QXBj3XswYcsN"
+                        />
                     </div>
-                    <div class='square'>
-                        <img class='lazy' data-src='U2FsdGVkX1+TSNuyjvOTwSynPAEmSQQlLPV+mPr8vXB2wk3Dy3UvyL3PXYoLUUkvvhrKPVHaimAYAqotf+icScz9oiRxIYKwDVTBx2OBB/Ji7fBCd1/3DVWG9FAdNnqlmEOYmej/l/5MXkVeSq7NZlEFdxZIQmERfCsJ+AkwcrDCxCJ0bjuG7tq++B65TvSPc3QeeKG9KygRRkmx7+PaWw==' data-title='No se' data-desc='ASdsad'>
+                    <div class="square">
+                        <img
+                            class="lazy"
+                            data-src="U2FsdGVkX1+TSNuyjvOTwSynPAEmSQQlLPV+mPr8vXB2wk3Dy3UvyL3PXYoLUUkvvhrKPVHaimAYAqotf+icScz9oiRxIYKwDVTBx2OBB/Ji7fBCd1/3DVWG9FAdNnqlmEOYmej/l/5MXkVeSq7NZlEFdxZIQmERfCsJ+AkwcrDCxCJ0bjuG7tq++B65TvSPc3QeeKG9KygRRkmx7+PaWw=="
+                            data-title="U2FsdGVkX1/3JFEDcE7aXxLr/3CTKUS8NmPHjqea2Os="
+                            data-desc="U2FsdGVkX1/2d7lONM4Luusq3ksmo9APf0Jfg8z5/9UhA9YhBLt0QXBj3XswYcsN"
+                        />
                     </div>
-                    <div class='square'>
-                        <img class='lazy' data-src='U2FsdGVkX18ezOSTbr+c+dm0TmqtbYq1QiHL2w8Q6EC6l7feT5eBvQIzjwTywVBv8opX5OnSe6ZaSLycWlXHwLfltUn/vv5DZ/m1Igp34K8fD2gkTUE3ag3ttYkMuJvXgbSSDdy2oLrMVmHmGrJJ2UVtVpovM5faErfBtC2ARLbAys0I6OjtVEtiYN8UEObU8ASUKNYIglc70MGcywo0yA==' data-title='No se' data-desc='ASdsad'>
+                    <div class="square">
+                        <img
+                            class="lazy"
+                            data-src="U2FsdGVkX18ezOSTbr+c+dm0TmqtbYq1QiHL2w8Q6EC6l7feT5eBvQIzjwTywVBv8opX5OnSe6ZaSLycWlXHwLfltUn/vv5DZ/m1Igp34K8fD2gkTUE3ag3ttYkMuJvXgbSSDdy2oLrMVmHmGrJJ2UVtVpovM5faErfBtC2ARLbAys0I6OjtVEtiYN8UEObU8ASUKNYIglc70MGcywo0yA=="
+                            data-title="U2FsdGVkX1/3JFEDcE7aXxLr/3CTKUS8NmPHjqea2Os="
+                            data-desc="U2FsdGVkX1/2d7lONM4Luusq3ksmo9APf0Jfg8z5/9UhA9YhBLt0QXBj3XswYcsN"
+                        />
                     </div>
-                    <div class='square'>
-                        <img class='lazy' data-src='U2FsdGVkX18GLuIkDJDDp++l6kDKy3iOSJdUJ8jnFCxQm+q283z/cKC5nFg+P4EnMoq2wSfweaP6/AP/XR+iiZxytn6ypxJNHg3KQyY0AtHhY2UKO4LZ9AmHU9VHEh+yueYJaqIjvEEBuvEfxZuyBe04rEZK/BR8m0lDK3OPQePYbYmIDGD98fU7/ZPbiKp7y5bxsZxb25S1wlD4ObxyfQ==' data-title='No se' data-desc='ASdsad'>
+                    <div class="square">
+                        <img
+                            class="lazy"
+                            data-src="U2FsdGVkX18GLuIkDJDDp++l6kDKy3iOSJdUJ8jnFCxQm+q283z/cKC5nFg+P4EnMoq2wSfweaP6/AP/XR+iiZxytn6ypxJNHg3KQyY0AtHhY2UKO4LZ9AmHU9VHEh+yueYJaqIjvEEBuvEfxZuyBe04rEZK/BR8m0lDK3OPQePYbYmIDGD98fU7/ZPbiKp7y5bxsZxb25S1wlD4ObxyfQ=="
+                            data-title="U2FsdGVkX1/3JFEDcE7aXxLr/3CTKUS8NmPHjqea2Os="
+                            data-desc="U2FsdGVkX1/2d7lONM4Luusq3ksmo9APf0Jfg8z5/9UhA9YhBLt0QXBj3XswYcsN"
+                        />
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id='show-image'>
-        </div>
+        <div id="show-image"></div>
 
-        <script src='./index.js'> </script>
-        <script src='./encrypt.js'> </script>
+        <script src="./index.js"></script>
+        <script src="./encrypt.js"></script>
     </body>
 </html>

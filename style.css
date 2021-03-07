@@ -1,8 +1,8 @@
 @font-face {
-    font-family: 'Nimbus Sans';
+    font-family: "Nimbus Sans";
     font-style: normal;
     font-weight: normal;
-    src: local('Nimbus Sans'), url('NimbusSanL-Reg.otf') format('otf');
+    src: local("Nimbus Sans"), url("NimbusSanL-Reg.otf") format("otf");
 }
 
 body {
@@ -28,6 +28,9 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 2rem;
+    opacity: 0;
+
+    transition: opacity 0.5s;
 }
 
 .input-holder {
@@ -35,9 +38,31 @@ h1 {
     height: 22rem;
     border-radius: 0.5rem;
     padding: 5%;
-    margin: 3rem auto 0 auto;
+    margin: 0 auto 0 auto;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
     background-color: white;
+    color: rgb(31, 26, 26);
+    position: fixed;
+    top: 3rem;
+    left: 0;
+    right: 0;
+    opacity: 1;
+
+    transition: opacity 0.5s;
+}
+
+.disappear {
+    opacity: 0;
+}
+
+.appear {
+    opacity: 1 !important;
+}
+
+.lock {
+    margin-left: 45%;
+    margin-right: 45%;
+    width: 10%;
     color: black;
 }
 
@@ -53,6 +78,27 @@ h1 {
     text-align: center;
     border-left-width: 1%;
     border-right-width: 1%;
+}
+
+#input.wrong {
+    animation-name: wrong;
+    animation-duration: 0.5s;
+    animation-iteration-count: 2;
+}
+
+@keyframes wrong {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .submit {
@@ -81,7 +127,8 @@ h1 {
 
 .square img {
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -113,9 +160,9 @@ h1 {
 
 /* Track */
 #show-image::-webkit-scrollbar-track {
-    background-color: white; 
+    background-color: white;
 }
-  
+
 /* Handle */
 #show-image::-webkit-scrollbar-thumb {
     background: black;
@@ -138,7 +185,7 @@ h1 {
 
 #show-image.show {
     display: block;
-    position: fixed; 
+    position: fixed;
 }
 
 #show-image-description {
@@ -172,5 +219,6 @@ h1 {
 
     .input-holder {
         width: 80%;
+        height: 25rem;
     }
 }

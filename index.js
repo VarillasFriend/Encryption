@@ -51,25 +51,30 @@ function decrypt(message = "", key = "") {
 function testPassword() {
     const password = document.querySelector("#input").value;
 
-    // if (decrypt(encryptedPassword, password) == password && password) {
-    authenticated = true;
+    if (decrypt(encryptedPassword, password) == password && password) {
+        authenticated = true;
 
-    submitForm(password);
-    // }
+        submitForm(password);
+    } else {
+        animateInput();
+    }
 }
 
 function submitForm(password) {
     if (authenticated) {
-        content.style.display = "block";
-        inputHolder.style.display = "none";
         time_before = new Date();
         time_before = time_before.getTime();
 
-        const h1 = document.querySelectorAll("h1"),
-            h2 = document.querySelectorAll("h2"),
-            h3 = document.querySelectorAll("h3"),
-            p = document.querySelectorAll("p"),
-            img = document.querySelectorAll("img");
+        window.requestAnimationFrame(animateSVG);
+        setTimeout(() => displayContent(), 600);
+        document.body.style.overflowY = "hidden";
+        content.style.display = "block";
+
+        const h1 = content.querySelectorAll("h1"),
+            h2 = content.querySelectorAll("h2"),
+            h3 = content.querySelectorAll("h3"),
+            p = content.querySelectorAll("p"),
+            img = content.querySelectorAll("img");
 
         decryptItems(h1, password);
         decryptItems(h2, password);
@@ -86,6 +91,17 @@ function submitForm(password) {
     }
 }
 
+function displayContent() {
+    inputHolder.classList.add('disappear');
+    content.classList.add('appear')
+
+    inputHolder.onanimationend = function (event) {
+        input.style.display = 'none';
+    };
+    
+    document.body.style.overflowY = "scroll";
+}
+
 function decryptItems(elements, password) {
     elements.forEach((element) => {
         element.innerText = decrypt(element.innerText, password);
@@ -99,6 +115,8 @@ function decryptImages(elements, password) {
         } else if (element.dataset.src) {
             element.dataset.src = decrypt(element.dataset.src, password);
         }
+        element.dataset.title = decrypt(element.dataset.title, password);
+        element.dataset.desc = decrypt(element.dataset.desc, password);
     });
 }
 
@@ -153,6 +171,30 @@ function stopShowImg() {
     all.style.filter = "blur(0px)";
 }
 
+const svg = document.querySelector("#svg");
+let n = 4,
+    n1 = 4;
+let start;
+
+function animateSVG(timestamp) {
+    if (start === undefined) start = timestamp;
+    const elapsed = timestamp - start;
+
+    n = 4 - Math.min(0.005 * elapsed, 2);
+    n1 = 4 + Math.min(0.005 * elapsed, 2);
+    svg.attributes.d.value = `M8 11v-${n1}a4 4 0 0 1 8 0v${n}`;
+
+    if (elapsed < 400) {
+        window.requestAnimationFrame(animateSVG);
+    }
+}
+
+function animateInput() {
+    input.classList.add("wrong");
+    input.onanimationend = function (event) {
+        input.classList.remove("wrong");
+    };
+}
 
 // console.log(
 //     encrypt(
