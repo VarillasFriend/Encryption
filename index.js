@@ -98,7 +98,7 @@ function displayContent() {
     inputHolder.onanimationend = function (event) {
         input.style.display = 'none';
     };
-    
+
     document.body.style.overflowY = "scroll";
 }
 
@@ -134,6 +134,18 @@ let authenticated = false;
 
 input.onkeydown = function (event) {
     if (event.keyCode == 13) {
+        testPassword();
+    }
+};
+
+submit.onkeydown = function (event) {
+    if (event.keyCode == 13) {
+        testPassword();
+    }
+};
+
+submit.onkeydown = function (event) {
+    if (event.keyCode == 32) {
         testPassword();
     }
 };

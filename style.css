@@ -1,9 +1,9 @@
-@font-face {
+/* @font-face {
     font-family: "Nimbus Sans";
     font-style: normal;
     font-weight: normal;
     src: local("Nimbus Sans"), url("NimbusSanL-Reg.otf") format("otf");
-}
+} */
 
 body {
     overflow-x: hidden;
@@ -105,13 +105,20 @@ h1 {
     margin: 3rem 30% 0 30%;
     font-size: 1.2rem;
     width: 40%;
-    height: 3rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    /* height: 3rem; */
     text-align: center;
     background-color: black;
     color: white;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
+    font-weight: 600;
+}
+
+.submit:focus {
+    background-color: #222;
 }
 
 #img-holder {
