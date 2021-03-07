@@ -68,7 +68,6 @@ function submitForm(password) {
 
         window.requestAnimationFrame(animateSVG);
         setTimeout(() => displayContent(), 600);
-        document.body.style.overflowY = "hidden";
         content.style.display = "block";
 
         const h1 = content.querySelectorAll("h1"),
@@ -96,11 +95,7 @@ function displayContent() {
     inputHolder.classList.add('disappear');
     content.classList.add('appear')
 
-    inputHolder.onanimationend = function (event) {
-        input.style.display = 'none';
-    };
-
-    document.body.style.overflowY = "scroll";
+    setTimeout(() => inputHolder.style.display = 'none', 500);
 }
 
 function decryptItems(elements, password) {
@@ -140,13 +135,9 @@ input.onkeydown = function (event) {
 };
 
 submit.onkeydown = function (event) {
-    if (event.keyCode == 13) {
-        testPassword();
-    }
-};
-
-submit.onkeydown = function (event) {
     if (event.keyCode == 32) {
+        testPassword();
+    } else if (event.keyCode == 13) {
         testPassword();
     }
 };
@@ -209,9 +200,15 @@ function animateInput() {
     };
 }
 
-// console.log(
-//     encrypt(
-//         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.4itrffpKjIUD1NP4HCECqwHaEj%26pid%3DApi&f=1",
-//         "VcDM63Ek!W9*Qzw$"
-//     )
-// );
+console.log(
+    encrypt(
+        "Por que hice esto?",
+        "VcDM63Ek!W9*Qzw$"
+    )
+);
+console.log(
+    encrypt(
+        "Aca puedes ver muchas fotos de muchas cosas, como por ejemplo, de caballos, o de David Attenborough o de Charles. Todos los contenidos de esta pagina estan totalmente encriptados y nadie los puede ver!",
+        "VcDM63Ek!W9*Qzw$"
+    )
+);

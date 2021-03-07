@@ -7,6 +7,7 @@
 
 body {
     overflow-x: hidden;
+    overflow-y: scroll;
     margin: 0;
     font-family: "Open Sans", sans-serif;
     background-color: black;
@@ -15,7 +16,7 @@ body {
 
 h1 {
     font-family: "Bitter", serif;
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 
 #all {
@@ -35,7 +36,7 @@ h1 {
 
 .input-holder {
     width: 30%;
-    height: 22rem;
+    height: 25rem;
     border-radius: 0.5rem;
     padding: 5%;
     margin: 0 auto 0 auto;
@@ -43,7 +44,7 @@ h1 {
     background-color: white;
     color: rgb(31, 26, 26);
     position: fixed;
-    top: 3rem;
+    top: 2rem;
     left: 0;
     right: 0;
     opacity: 1;
@@ -82,7 +83,7 @@ h1 {
 
 #input.wrong {
     animation-name: wrong;
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     animation-iteration-count: 2;
 }
 
@@ -119,6 +120,32 @@ h1 {
 
 .submit:focus {
     background-color: #222;
+}
+
+.main-title {
+    font-size: 6rem;
+}
+
+.container {
+    margin-left: 3rem;
+    display: flex;
+}
+
+.container .title {
+    width: 40%;
+}
+
+.container .description {
+    margin: 3rem 0 0 0;
+    font-size: 1.5rem;
+    width: 60%;
+}
+
+.svg-arrow2 {
+    margin: 1rem;
+    margin-left: 40%;
+    transform:rotate(100deg);
+    transform: scale(-1, 1);
 }
 
 #img-holder {
@@ -200,8 +227,23 @@ h1 {
 }
 
 @media only screen and (max-width: 60rem) {
+    .container {
+        display: block;
+        margin: 0;
+    }
+
+    .container .title {
+        width: 100%;
+    }
+
+    .container .description {
+        margin: 0;
+        width: 100%;
+    }
+
     .input-holder {
         width: 50%;
+        height: 25rem;
     }
 }
 
@@ -226,6 +268,10 @@ h1 {
 
     .input-holder {
         width: 80%;
-        height: 25rem;
+        height: 28rem;
+    }
+
+    .main-title {
+        font-size: 5rem;
     }
 }
