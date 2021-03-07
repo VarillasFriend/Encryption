@@ -6,6 +6,8 @@ function lazyLoad() {
         clearTimeout(lazyLoadThrottleTimeout);
     }
 
+    width="44"
+    height="44"
     lazyLoadThrottleTimeout = setTimeout(function () {
         lazyLoadImages.forEach(function (img) {
             if (defineElementOffset(img, 0)) {
@@ -34,7 +36,6 @@ function defineElementOffset(element, change) {
 document.addEventListener("scroll", lazyLoad);
 window.addEventListener("resize", lazyLoad);
 window.addEventListener("orientationChange", lazyLoad);
-window.addEventListener("DOMContentLoaded", lazyLoad);
 
 function encrypt(message = "", key = "") {
     var message = CryptoJS.AES.encrypt(message, key);
