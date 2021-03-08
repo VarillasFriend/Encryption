@@ -15,8 +15,8 @@ body {
 }
 
 h1 {
-    font-family: "Bitter", serif;
-    font-size: 3rem;
+    font-family: "Volkhov", serif;
+    font-size: 2.7rem;
 }
 
 #all {
@@ -144,7 +144,7 @@ h1 {
 .svg-arrow2 {
     margin: 1rem;
     margin-left: 40%;
-    transform:rotate(100deg);
+    transform: rotate(100deg);
     transform: scale(-1, 1);
 }
 

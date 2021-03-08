@@ -6,8 +6,8 @@ function lazyLoad() {
         clearTimeout(lazyLoadThrottleTimeout);
     }
 
-    width="44"
-    height="44"
+    width = "44";
+    height = "44";
     lazyLoadThrottleTimeout = setTimeout(function () {
         lazyLoadImages.forEach(function (img) {
             if (defineElementOffset(img, 0)) {
@@ -92,10 +92,12 @@ function submitForm(password) {
 }
 
 function displayContent() {
-    inputHolder.classList.add('disappear');
-    content.classList.add('appear')
+    inputHolder.classList.add("disappear");
+    content.classList.add("appear");
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 
-    setTimeout(() => inputHolder.style.display = 'none', 500);
+    setTimeout(() => (inputHolder.style.display = "none"), 500);
 }
 
 function decryptItems(elements, password) {
@@ -202,13 +204,8 @@ function animateInput() {
 
 console.log(
     encrypt(
-        "Por que hice esto?",
+        "<a href='https://www.youtube.com/watch?v=cICYAVc0ANU'>Soy Caillouuuuuuuu.</a>",
         "VcDM63Ek!W9*Qzw$"
     )
 );
-console.log(
-    encrypt(
-        "Aca puedes ver muchas fotos de muchas cosas, como por ejemplo, de caballos, o de David Attenborough o de Charles. Todos los contenidos de esta pagina estan totalmente encriptados y nadie los puede ver!",
-        "VcDM63Ek!W9*Qzw$"
-    )
-);
+
