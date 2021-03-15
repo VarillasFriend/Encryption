@@ -122,6 +122,10 @@ h1 {
     background-color: #222;
 }
 
+.heading {
+    padding-bottom: 2rem;
+}
+
 .main-title {
     font-size: 6rem;
 }

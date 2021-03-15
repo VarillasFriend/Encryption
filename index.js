@@ -1,36 +1,33 @@
-const lazyLoadImages = document.querySelectorAll("img.lazy");
 let lazyLoadThrottleTimeout;
+let displayed = false;
 
 function lazyLoad() {
-    if (lazyLoadThrottleTimeout) {
-        clearTimeout(lazyLoadThrottleTimeout);
-    }
-
-    width = "44";
-    height = "44";
-    lazyLoadThrottleTimeout = setTimeout(function () {
-        lazyLoadImages.forEach(function (img) {
-            if (defineElementOffset(img, 0)) {
-                img.src = img.dataset.src;
-                img.classList.remove("lazy");
-            }
-        });
-        if (lazyLoadImages.length == 0) {
-            document.removeEventListener("scroll", lazyLoad);
-            window.removeEventListener("resize", lazyLoad);
-            window.removeEventListener("orientationChange", lazyLoad);
+    if (displayed) {
+        const lazyLoadImages = document.querySelectorAll("img.lazy");
+        if (lazyLoadThrottleTimeout) {
+            clearTimeout(lazyLoadThrottleTimeout);
         }
-    }, 20);
-}
 
-function defineElementOffset(element, change) {
-    const scrollTop = window.pageYOffset;
+        width = "44";
+        height = "44";
+        lazyLoadThrottleTimeout = setTimeout(function () {
+            console.log(lazyLoadImages)
+            lazyLoadImages.forEach((img) => {
+                if (img.parentElement.offsetTop < window.innerHeight + window.pageYOffset + 400) {
+                    img.src = img.dataset.src;
+                    img.classList.remove("lazy");
+                }
+            });
+            if (lazyLoadImages.length == 0) {
+                document.removeEventListener("scroll", lazyLoad);
+                window.removeEventListener("resize", lazyLoad);
+                window.removeEventListener("orientationChange", lazyLoad);
+                console.log('a')
+            }
+        }, 20);
 
-    if (element.offsetTop < window.innerHeight + scrollTop - change) {
-        return true;
-    } else {
-        return false;
-    }
+console.log(document.querySelector('#img-holder').offsetTop)
+    }   
 }
 
 document.addEventListener("scroll", lazyLoad);
@@ -55,7 +52,9 @@ function testPassword() {
     if (decrypt(encryptedPassword, password) == password && password) {
         authenticated = true;
 
-        submitForm(password);
+        window.requestAnimationFrame(animateSVG);
+        setTimeout(() => submitForm(password), 400);
+        // submitForm(password);
     } else {
         animateInput();
     }
@@ -66,8 +65,7 @@ function submitForm(password) {
         time_before = new Date();
         time_before = time_before.getTime();
 
-        window.requestAnimationFrame(animateSVG);
-        setTimeout(() => displayContent(), 600);
+        setTimeout(() => displayContent(), 200);
         content.style.display = "block";
 
         const h1 = content.querySelectorAll("h1"),
@@ -98,6 +96,7 @@ function displayContent() {
     document.documentElement.scrollTop = 0;
 
     setTimeout(() => (inputHolder.style.display = "none"), 500);
+    setTimeout(() => (displayed = true), 400);
 }
 
 function decryptItems(elements, password) {
@@ -108,9 +107,10 @@ function decryptItems(elements, password) {
 
 function decryptImages(elements, password) {
     elements.forEach((element) => {
-        if (element.src.value) {
-            element.src.value = decrypt(element.src.value, password);
-        } else if (element.dataset.src) {
+        if (element.src) {
+            element.src = decrypt(element.dataset.src, password);
+        } 
+        if (element.dataset.src) {
             element.dataset.src = decrypt(element.dataset.src, password);
         }
         element.dataset.title = decrypt(element.dataset.title, password);
