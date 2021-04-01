@@ -205,8 +205,45 @@ const theme = document.querySelector("#theme"),
     root = document.querySelector(":root");
 
 theme.onclick = function () {
-    root.style.setProperty("--color1", root.style.getPropertyValue("--color1") == 'white' ? 'black' : 'white');
-    root.style.setProperty("--color2", root.style.getPropertyValue("--color2") == 'black' ? 'white' : 'black');
+    root.style.setProperty(
+        "--color1",
+        root.style.getPropertyValue("--color1") == "white" ? "black" : "white"
+    );
+    root.style.setProperty(
+        "--color2",
+        root.style.getPropertyValue("--color2") == "black" ? "white" : "black"
+    );
+};
+
+theme.onkeydown = function (event) {
+    event.preventDefault();
+    if (event.keyCode == 32) {
+        root.style.setProperty(
+            "--color1",
+            root.style.getPropertyValue("--color1") == "white"
+                ? "black"
+                : "white"
+        );
+        root.style.setProperty(
+            "--color2",
+            root.style.getPropertyValue("--color2") == "black"
+                ? "white"
+                : "black"
+        );
+    } else if (event.keyCode == 13) {
+        root.style.setProperty(
+            "--color1",
+            root.style.getPropertyValue("--color1") == "white"
+                ? "black"
+                : "white"
+        );
+        root.style.setProperty(
+            "--color2",
+            root.style.getPropertyValue("--color2") == "black"
+                ? "white"
+                : "black"
+        );
+    }
 };
 
 // console.log(
