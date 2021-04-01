@@ -11,9 +11,11 @@ function lazyLoad() {
         width = "44";
         height = "44";
         lazyLoadThrottleTimeout = setTimeout(function () {
-            console.log(lazyLoadImages)
             lazyLoadImages.forEach((img) => {
-                if (img.parentElement.offsetTop < window.innerHeight + window.pageYOffset + 400) {
+                if (
+                    img.parentElement.offsetTop <
+                    window.innerHeight + window.pageYOffset + 400
+                ) {
                     img.src = img.dataset.src;
                     img.classList.remove("lazy");
                 }
@@ -22,12 +24,9 @@ function lazyLoad() {
                 document.removeEventListener("scroll", lazyLoad);
                 window.removeEventListener("resize", lazyLoad);
                 window.removeEventListener("orientationChange", lazyLoad);
-                console.log('a')
             }
         }, 20);
-
-console.log(document.querySelector('#img-holder').offsetTop)
-    }   
+    }
 }
 
 document.addEventListener("scroll", lazyLoad);
@@ -109,7 +108,7 @@ function decryptImages(elements, password) {
     elements.forEach((element) => {
         if (element.src) {
             element.src = decrypt(element.dataset.src, password);
-        } 
+        }
         if (element.dataset.src) {
             element.dataset.src = decrypt(element.dataset.src, password);
         }
@@ -202,10 +201,17 @@ function animateInput() {
     };
 }
 
-console.log(
-    encrypt(
-        "<a href='https://www.youtube.com/watch?v=cICYAVc0ANU'>Soy Caillouuuuuuuu.</a>",
-        "VcDM63Ek!W9*Qzw$"
-    )
-);
+const theme = document.querySelector("#theme"),
+    root = document.querySelector(":root");
 
+theme.onclick = function () {
+    root.style.setProperty("--color1", root.style.getPropertyValue("--color1") == 'white' ? 'black' : 'white');
+    root.style.setProperty("--color2", root.style.getPropertyValue("--color2") == 'black' ? 'white' : 'black');
+};
+
+// console.log(
+//     encrypt(
+//         "<a href='https://www.youtube.com/watch?v=cICYAVc0ANU'>Soy Caillouuuuuuuu.</a>",
+//         "VcDM63Ek!W9*Qzw$"
+//     )
+// );

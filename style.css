@@ -5,13 +5,22 @@
     src: local("Nimbus Sans"), url("NimbusSanL-Reg.otf") format("otf");
 } */
 
+:root {
+    --color1: black;
+    --color2: white;
+}
+
+* {
+    transition: color 1s, background-color 1s;
+}
+
 body {
     overflow-x: hidden;
     overflow-y: scroll;
     margin: 0;
     font-family: "Open Sans", sans-serif;
-    background-color: black;
-    color: white;
+    background-color: var(--color1);
+    color: var(--color2);
 }
 
 h1 {
@@ -34,6 +43,15 @@ h1 {
     transition: opacity 0.5s;
 }
 
+#theme {
+    position: fixed;
+    left: 0.7rem;
+    bottom: 0.7rem;
+    cursor: pointer;
+    z-index: 10;
+    color: --color1;
+}
+
 .input-holder {
     width: 30%;
     height: 25rem;
@@ -41,7 +59,7 @@ h1 {
     padding: 5%;
     margin: 0 auto 0 auto;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
-    background-color: white;
+    background-color: var(--color2);
     color: rgb(31, 26, 26);
     position: fixed;
     top: 2rem;
@@ -64,11 +82,12 @@ h1 {
     margin-left: 45%;
     margin-right: 45%;
     width: 10%;
-    color: black;
+    color: var(--color1);
 }
 
 .encryption-title {
     text-align: center;
+    color: var(--color1);
 }
 
 #input {
@@ -83,7 +102,7 @@ h1 {
 
 #input.wrong {
     animation-name: wrong;
-    animation-duration: 0.3s;
+    animation-duration: 0.2s;
     animation-iteration-count: 2;
 }
 
@@ -110,8 +129,8 @@ h1 {
     padding-bottom: 0.8rem;
     /* height: 3rem; */
     text-align: center;
-    background-color: black;
-    color: white;
+    background-color: var(--color1);
+    color: var(--color2);
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
@@ -178,15 +197,15 @@ h1 {
     width: 80%;
     height: auto;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
-    background-color: white;
-    color: black;
+    background-color: var(--color2);
+    color: var(--color1);
     left: 10%;
     top: 0%;
     bottom: 0%;
     z-index: 1;
     overflow-y: scroll;
     filter: blur(0px);
-    scrollbar-color: black rgba(0, 0, 0, 0);
+    scrollbar-color: var(--color1) rgba(0, 0, 0, 0);
     scrollbar-width: thin;
 }
 
@@ -198,12 +217,12 @@ h1 {
 
 /* Track */
 #show-image::-webkit-scrollbar-track {
-    background-color: white;
+    background-color: var(--color2);
 }
 
 /* Handle */
 #show-image::-webkit-scrollbar-thumb {
-    background: black;
+    background: var(--color1);
     border-radius: 3px;
 }
 /* ////////// */
