@@ -12,6 +12,8 @@
 
 * {
     transition: color 1s, background-color 1s;
+    will-change: color;
+    will-change: background-color;
 }
 
 body {
@@ -43,6 +45,14 @@ h1 {
     transition: opacity 0.5s;
 }
 
+.theme-div {
+    position: fixed;
+    left: 0.7rem;
+    bottom: 0.7rem;
+    display: flex;
+    width: 10rem;
+}
+
 #theme {
     position: fixed;
     left: 0.7rem;
@@ -51,6 +61,10 @@ h1 {
     z-index: 10;
     color: --color1;
 }
+
+/* .theme-selector {
+    display: ;
+} */
 
 .input-holder {
     width: 30%;
