@@ -204,7 +204,7 @@ function animateInput() {
 const theme = document.querySelector("#theme"),
     root = document.querySelector(":root");
 
-theme.onclick = function () {
+function changeTheme(save) {
     root.style.setProperty(
         "--color1",
         root.style.getPropertyValue("--color1") == "white" ? "black" : "white"
@@ -213,38 +213,45 @@ theme.onclick = function () {
         "--color2",
         root.style.getPropertyValue("--color2") == "black" ? "white" : "black"
     );
+
+    if (save) {
+        localStorage["theme"] =
+            localStorage["theme"] == "dark" ? "light" : "dark";
+    }
+}
+
+theme.onclick = function () {
+    changeTheme(true);
 };
 
 theme.onkeydown = function (event) {
     event.preventDefault();
     if (event.keyCode == 32) {
-        root.style.setProperty(
-            "--color1",
-            root.style.getPropertyValue("--color1") == "white"
-                ? "black"
-                : "white"
-        );
-        root.style.setProperty(
-            "--color2",
-            root.style.getPropertyValue("--color2") == "black"
-                ? "white"
-                : "black"
-        );
+        changeTheme(true);
     } else if (event.keyCode == 13) {
-        root.style.setProperty(
-            "--color1",
-            root.style.getPropertyValue("--color1") == "white"
-                ? "black"
-                : "white"
-        );
-        root.style.setProperty(
-            "--color2",
-            root.style.getPropertyValue("--color2") == "black"
-                ? "white"
-                : "black"
-        );
+        changeTheme(true);
     }
 };
+
+function setTransitionToNormal() {
+    document.querySelectorAll("*").forEach(function (element) {
+        element.style.transition = "color 1s, background-color 1s";
+    })
+    document.querySelector('#content').style.transition = 'opacity 0.5s'
+    document.querySelector('.input-holder').style.transition = 'opacity 0.5s'
+}
+
+if (localStorage["theme"] == "light") {
+    document.querySelectorAll("*").forEach(function (element) {
+        element.style.transition = "color 0s, background-color 0s";
+    });
+    changeTheme(false);
+    setTimeout(
+        () =>
+            setTransitionToNormal(),
+        1
+    );
+}
 
 // console.log(
 //     encrypt(
