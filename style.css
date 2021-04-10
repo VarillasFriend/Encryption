@@ -12,8 +12,8 @@
 
 * {
     transition: color 1s, background-color 1s;
-    will-change: color;
-    will-change: background-color;
+    /* will-change: color; */
+    will-change: background-color, color;
 }
 
 body {
