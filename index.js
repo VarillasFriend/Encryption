@@ -92,7 +92,7 @@ const encryptedPassword =
     theme = document.querySelector("#theme"),
     root = document.querySelector(":root"),
     svg = document.querySelector("#svg"),
-    body = document.querySelector('body');
+    body = document.querySelector("body");
 
 let n = 4,
     n1 = 4,
@@ -271,9 +271,8 @@ function stopShowImg() {
 // will change
 
 function changeTheme(save) {
-    body.classList.toggle('dark-theme')
-    body.classList.toggle('light-theme')
-
+    body.classList.toggle("dark-theme");
+    body.classList.toggle("light-theme");
 
     // if true gets passed as an argument, the theme selection
     // is remembered by the browser the next time the user enters
@@ -312,6 +311,25 @@ if (localStorage["theme"] == "light") {
 if (sessionStorage.getItem("password")) {
     authenticated = true;
     submitForm(sessionStorage.getItem("password"), false);
+}
+
+function iOS() {
+    return (
+        [
+            "iPad Simulator",
+            "iPhone Simulator",
+            "iPod Simulator",
+            "iPad",
+            "iPhone",
+            "iPod",
+        ].includes(navigator.platform) ||
+        // iPad on iOS 13 detection
+        (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+    );
+}
+
+if (iOS) {
+    body.style.transition = "color 0.3s, background-color 0.3s";
 }
 
 // console.log(
