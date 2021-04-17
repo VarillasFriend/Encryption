@@ -285,26 +285,43 @@ function changeTheme(save) {
 themeClicker = new Clicker(theme, changeTheme, true);
 themeClicker.createClick();
 
-function setTransitionsToNormal() {
-    document.querySelectorAll("*").forEach(function (element) {
-        element.style.transition = "color 1s, background-color 1s";
-    });
-    document.querySelector("#content").style.transition = "opacity 0.5s";
-    document.querySelector(".input-holder").style.transition = "opacity 0.5s";
+function transitions(trans) {
+    if (trans) {
+        document.body.style.transition = "background-color 1s";
+        document.querySelectorAll("h1").forEach((element) => {
+            element.style.transition = "color 1s";
+        });
+        document.querySelector("#theme").style.transition = "color 1s";
+        document.querySelector(".input-holder").style.transition =
+            "opacity 0.5s, color 1s, background-color 1s";
+        document.querySelector(".lock").style.transition = "color 1s";
+        document.querySelector(".encryption-title").style.transition = "color 1s";
+        document.querySelector("#show-image").style.transition =
+            "color 1s, background-color 1s";
+    } else {
+        console.log('a')
+        document.body.style.transition = "opacity 0s, color 0s, background-color 0s";
+        document.querySelectorAll("h1").forEach((element) => {
+            element.style.transition = "opacity 0s, color 0s, background-color 0s";
+        });
+        document.querySelector("#theme").style.transition = "opacity 0s, color 0s, background-color 0s";
+        document.querySelector(".input-holder").style.transition = "opacity 0s, color 0s, background-color 0s";
+        document.querySelector(".lock").style.transition = "opacity 0s, color 0s, background-color 0s";
+        document.querySelector(".encryption-title").style.transition = "opacity 0s, color 0s, background-color 0s";
+        document.querySelector("#show-image").style.transition = "opacity 0s, color 0s, background-color 0s";
+    }
 }
 
 // When the user enters the site, this checks weather there was
 // a theme saved by the user
 
 if (localStorage["theme"] == "light") {
-    // document.querySelectorAll("*").forEach(function (element) {
-    //     element.style.transition = "color 0s, background-color 0s";
-    // });
-    changeTheme(false);
+    transitions(false);
+    changeTheme(false)
 
     // Without the setTimeout, when the user enters the site, there will
     // be a transition changing from dark to light
-    // setTimeout(() => setTransitionsToNormal(), 0);
+    setTimeout(() => transitions(true), 0);
 }
 
 if (sessionStorage.getItem("password")) {

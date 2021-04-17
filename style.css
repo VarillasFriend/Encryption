@@ -6,6 +6,7 @@ body {
     background-color: var(--color1);
     color: var(--color2);
     transition: background-color 1s;
+    will-change: background-color;
 }
 
 body.dark-theme {
@@ -36,6 +37,7 @@ h1 {
     padding-bottom: 2rem;
     opacity: 0;
     transition: opacity 0.5s;
+    will-change: color;
 }
 
 .theme-div {
@@ -76,7 +78,7 @@ h1 {
     right: 0;
     opacity: 1;
 
-    transition: opacity 0.5, color 1s, background-color 1s;
+    transition: opacity 0.5s, color 1s, background-color 1s;
 }
 
 .disappear {
