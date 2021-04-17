@@ -40,9 +40,6 @@ h1 {
     margin-right: auto;
     padding-bottom: 2rem;
     opacity: 0;
-    transform: translate3d(0,0,0);
-    -webkit-transform: translate3d(0,0,0);
-
     transition: opacity 0.5s;
 }
 
@@ -91,6 +88,16 @@ h1 {
 }
 
 .appear {
+    opacity: 1 !important;
+}
+
+.quick-disappear {
+    transition: opacity 0s;
+    opacity: 0;
+}
+
+.quick-appear {
+    transition: opacity 0s;
     opacity: 1 !important;
 }
 

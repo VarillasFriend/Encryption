@@ -1,4 +1,4 @@
-// This class adds onclick and onkeydown properties to an element 
+// This class adds onclick and onkeydown properties to an element
 // to make it clickable and accesible easily
 
 class Clicker {
@@ -22,7 +22,7 @@ class Clicker {
     }
 }
 
-// lazyload() changes the data-src value of an image to src to 
+// lazyload() changes the data-src value of an image to src to
 // load it lazily
 
 let lazyLoadThrottleTimeout;
@@ -102,20 +102,24 @@ let n = 4,
 // encrypted password and if they are the same, it calls other
 // functions
 
-function testPassword() {
-    const password = document.querySelector("#input").value;
+function testPassword(password) {
+    if (!password) {
+        password = document.querySelector("#input").value;
+    }
 
     if (decrypt(encryptedPassword, password) == password && password) {
         authenticated = true;
 
         window.requestAnimationFrame(animateLock);
-        setTimeout(() => submitForm(password), 400);
+        setTimeout(() => submitForm(password, true), 400);
+
+        sessionStorage.setItem("password", password);
     } else {
         animateInput();
     }
 }
 
-// animateLock() makes the animation that makes the svg-lock 
+// animateLock() makes the animation that makes the svg-lock
 // "open" itself when the password is right
 
 function animateLock(timestamp) {
@@ -133,9 +137,9 @@ function animateLock(timestamp) {
 
 // submitForm() calls other functions if the password was right
 
-function submitForm(password) {
+function submitForm(password, animation) {
     if (authenticated) {
-        setTimeout(() => displayContent(), 200);
+        displayContent(animation);
         content.style.display = "block";
 
         const h1 = content.querySelectorAll("h1"),
@@ -157,14 +161,24 @@ function submitForm(password) {
 // displayContent() displays the content with an animation when
 // submitForm() calls it
 
-function displayContent() {
-    inputHolder.classList.add("disappear");
-    content.classList.add("appear");
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+function displayContent(animation) {
+    if (animation) {
+        inputHolder.classList.add("disappear");
+        content.classList.add("appear");
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
 
-    setTimeout(() => (inputHolder.style.display = "none"), 500);
-    setTimeout(() => (displayed = true), 400);
+        setTimeout(() => (inputHolder.style.display = "none"), 500);
+        setTimeout(() => (displayed = true), 400);
+    } else {
+        inputHolder.classList.add("quick-disappear");
+        content.classList.add("quick-appear");
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+
+        inputHolder.style.display = "none";
+        displayed = true;
+    }
 }
 
 // decryptItems() decrypts the contents of every element on a list
@@ -175,7 +189,7 @@ function decryptItems(elements, password) {
     });
 }
 
-// decryptImages() decrypts the data-title, data-desc and data-src 
+// decryptImages() decrypts the data-title, data-desc and data-src
 // attributes of every element on a list, and in case it has a src
 // value, it decrypts that, making it compatible with lazyLoad()
 
@@ -192,8 +206,8 @@ function decryptImages(elements, password) {
     });
 }
 
-// If the inputed password was wrong, testPassword calls 
-// animateInput(), which will play an animation on the input 
+// If the inputed password was wrong, testPassword calls
+// animateInput(), which will play an animation on the input
 
 function animateInput() {
     input.classList.add("wrong");
@@ -205,7 +219,7 @@ function animateInput() {
 submitClicker = new Clicker(submit, testPassword);
 submitClicker.createClick();
 
-// When enter is pressed on the input, testPassword() gets 
+// When enter is pressed on the input, testPassword() gets
 // called
 
 input.onkeydown = function (event) {
@@ -225,7 +239,7 @@ images.forEach((image) => {
 // showImg() displays an image and its title and description
 
 function showImg(image, event) {
-    // The showImage div changes to have another HTML inside, with 
+    // The showImage div changes to have another HTML inside, with
     // the img, title and desdc
     showImage.innerHTML = `<img src='${image.src}'> <div id='show-image-description'> <h1>${image.dataset.title}</h1> <p>${image.dataset.desc}</p> <svg xmlns="http://www.w3.org/2000/svg" id="close" class='icon' tabindex='0' width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> </div>`;
     showImage.classList.add("show");
@@ -252,7 +266,7 @@ function stopShowImg() {
     all.style.filter = "blur(0px)";
 }
 
-// changeTheme changes CSS root variables so that colors 
+// changeTheme changes CSS root variables so that colors
 // will change
 
 function changeTheme(save) {
@@ -285,7 +299,7 @@ function setTransitionsToNormal() {
     document.querySelector(".input-holder").style.transition = "opacity 0.5s";
 }
 
-// When the user enters the site, this checks weather there was 
+// When the user enters the site, this checks weather there was
 // a theme saved by the user
 
 if (localStorage["theme"] == "light") {
@@ -295,8 +309,13 @@ if (localStorage["theme"] == "light") {
     changeTheme(false);
 
     // Without the setTimeout, when the user enters the site, there will
-    // be a transition changing from dark to light 
-    setTimeout(() => setTransitionsToNormal(), 1);
+    // be a transition changing from dark to light
+    setTimeout(() => setTransitionsToNormal(), 0);
+}
+
+if (sessionStorage.getItem("password")) {
+    authenticated = true;
+    submitForm(sessionStorage.getItem("password"), false);
 }
 
 // console.log(
