@@ -330,6 +330,7 @@ function iOS() {
 
 if (iOS()) {
     body.style.transition = "color 0s, background-color 0s";
+    content.innerHTML = '<h1> Fotos </h1'
 }
 
 // console.log(
