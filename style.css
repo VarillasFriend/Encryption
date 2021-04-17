@@ -9,6 +9,7 @@ body {
     font-family: "Open Sans", sans-serif;
     background-color: var(--color1);
     color: var(--color2);
+    -webkit-transition: color 0.2s, background-color 0.2s;
 }
 
 body.dark-theme {
