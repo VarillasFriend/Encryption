@@ -328,8 +328,8 @@ function iOS() {
     );
 }
 
-if (iOS) {
-    body.style.transition = "color 0.3s, background-color 0.3s";
+if (iOS()) {
+    body.style.transition = "color 0s, background-color 0s";
 }
 
 // console.log(
