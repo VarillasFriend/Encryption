@@ -299,7 +299,6 @@ function transitions(trans) {
         document.querySelector("#show-image").style.transition =
             "color 1s, background-color 1s";
     } else {
-        console.log('a')
         document.body.style.transition = "opacity 0s, color 0s, background-color 0s";
         document.querySelectorAll("h1").forEach((element) => {
             element.style.transition = "opacity 0s, color 0s, background-color 0s";
