@@ -91,8 +91,7 @@ const encryptedPassword =
     all = document.getElementById("all"),
     theme = document.querySelector("#theme"),
     root = document.querySelector(":root"),
-    svg = document.querySelector("#svg"),
-    body = document.querySelector("body");
+    svg = document.querySelector("#svg");
 
 let n = 4,
     n1 = 4,
@@ -271,8 +270,8 @@ function stopShowImg() {
 // will change
 
 function changeTheme(save) {
-    body.classList.toggle("dark-theme");
-    body.classList.toggle("light-theme");
+    document.body.classList.toggle("dark-theme");
+    document.body.classList.toggle("light-theme");
 
     // if true gets passed as an argument, the theme selection
     // is remembered by the browser the next time the user enters
@@ -298,39 +297,19 @@ function setTransitionsToNormal() {
 // a theme saved by the user
 
 if (localStorage["theme"] == "light") {
-    document.querySelectorAll("*").forEach(function (element) {
-        element.style.transition = "color 0s, background-color 0s";
-    });
+    // document.querySelectorAll("*").forEach(function (element) {
+    //     element.style.transition = "color 0s, background-color 0s";
+    // });
     changeTheme(false);
 
     // Without the setTimeout, when the user enters the site, there will
     // be a transition changing from dark to light
-    setTimeout(() => setTransitionsToNormal(), 0);
+    // setTimeout(() => setTransitionsToNormal(), 0);
 }
 
 if (sessionStorage.getItem("password")) {
     authenticated = true;
     submitForm(sessionStorage.getItem("password"), false);
-}
-
-function iOS() {
-    return (
-        [
-            "iPad Simulator",
-            "iPhone Simulator",
-            "iPod Simulator",
-            "iPad",
-            "iPhone",
-            "iPod",
-        ].includes(navigator.platform) ||
-        // iPad on iOS 13 detection
-        (navigator.userAgent.includes("Mac") && "ontouchend" in document)
-    );
-}
-
-if (iOS()) {
-    body.style.transition = "color 0s, background-color 0s";
-    content.innerHTML = '<h1> Fotos </h1'
 }
 
 // console.log(
