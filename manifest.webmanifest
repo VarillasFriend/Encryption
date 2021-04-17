@@ -1,5 +1,5 @@
 {
-    "background_color": "black",
+    "background_color": "transparent",
     "description": "Show photos, when a certain password gets entered.",
     "display": "fullscreen",
     "icons": [
