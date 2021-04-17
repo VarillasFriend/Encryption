@@ -328,6 +328,10 @@ if (sessionStorage.getItem("password")) {
     submitForm(sessionStorage.getItem("password"), false);
 }
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+}
+
 // console.log(
 //     encrypt(
 //         "<a href='https://www.youtube.com/watch?v=cICYAVc0ANU'>Soy Caillouuuuuuuu.</a>",
