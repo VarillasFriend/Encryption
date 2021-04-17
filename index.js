@@ -91,7 +91,8 @@ const encryptedPassword =
     all = document.getElementById("all"),
     theme = document.querySelector("#theme"),
     root = document.querySelector(":root"),
-    svg = document.querySelector("#svg");
+    svg = document.querySelector("#svg"),
+    body = document.querySelector('body');
 
 let n = 4,
     n1 = 4,
@@ -270,14 +271,9 @@ function stopShowImg() {
 // will change
 
 function changeTheme(save) {
-    root.style.setProperty(
-        "--color1",
-        root.style.getPropertyValue("--color1") == "white" ? "black" : "white"
-    );
-    root.style.setProperty(
-        "--color2",
-        root.style.getPropertyValue("--color2") == "black" ? "white" : "black"
-    );
+    body.classList.toggle('dark-theme')
+    body.classList.toggle('light-theme')
+
 
     // if true gets passed as an argument, the theme selection
     // is remembered by the browser the next time the user enters

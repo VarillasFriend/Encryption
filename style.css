@@ -1,15 +1,3 @@
-/* @font-face {
-    font-family: "Nimbus Sans";
-    font-style: normal;
-    font-weight: normal;
-    src: local("Nimbus Sans"), url("NimbusSanL-Reg.otf") format("otf");
-} */
-
-:root {
-    --color1: black;
-    --color2: white;
-}
-
 * {
     transition: color 1s, background-color 1s;
 }
@@ -21,6 +9,16 @@ body {
     font-family: "Open Sans", sans-serif;
     background-color: var(--color1);
     color: var(--color2);
+}
+
+body.dark-theme {
+    --color1: black;
+    --color2: white;
+}
+
+body.light-theme {
+    --color1: white;
+    --color2: black;
 }
 
 h1 {
